@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard - DISA Gita Engine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="godly-bg"></div>
+    <nav id="mainNav">
+        <a href="INDEX.HTML" data-lang="home">Home</a>
+        <a href="dashboard.html" data-lang="dashboard">Dashboard</a>
+        <a href="lessons.html" data-lang="lessons">Lessons</a>
+        <a href="tasks.html" data-lang="tasks">Tasks</a>
+        <a href="leaderboard.html" data-lang="leaderboard">Leaderboard</a>
+        <a href="profile.html" data-lang="profile">Profile</a>
+        <a href="#" onclick="logout()" data-lang="logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="animated-text" data-text="Global Leaderboard">Global Leaderboard</h1>
+        <p style="font-size: 18px; color: #ffdd70;">See how you rank among spiritual aspirants worldwide</p>
+
+        <!-- SECTION 1: Your Ranking -->
+        <div style="margin: 20px 0; padding: 25px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.08); animation: slideInUp 0.8s ease-out;">
+            <h2 style="color: #ffdd70; margin-top: 0;">🏆 Your Leaderboard Position</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="padding: 20px; background: rgba(255,215,0,0.15); border-left: 4px solid #ffd700; border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Your Rank</p>
+                    <p style="margin: 10px 0; color: #ffd700; font-size: 28px; font-weight: bold;" id="yourRank">--</p>
+                </div>
+                <div style="padding: 20px; background: rgba(100,200,255,0.15); border-left: 4px solid #00bfff; border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Your Points</p>
+                    <p style="margin: 10px 0; color: #00bfff; font-size: 28px; font-weight: bold;" id="yourPoints">0</p>
+                </div>
+                <div style="padding: 20px; background: rgba(144,238,144,0.15); border-left: 4px solid #90ee90; border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Your Title</p>
+                    <p style="margin: 10px 0; color: #90ee90; font-size: 18px; font-weight: bold;" id="yourTitle">Beginner</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Top Rankings -->
+        <div class="section-divider" style="margin: 30px 0;"></div>
+        <div style="margin: 20px 0; padding: 25px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.05); animation: slideInUp 0.8s ease-out 0.2s both;">
+            <h2 style="color: #ffdd70; margin-top: 0;">🌍 Top 10 Global Leaders</h2>
+            <div style="overflow-x: auto; margin-top: 20px;">
+                <table id="leaderboardTable" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: rgba(245,197,66,0.1); border-bottom: 2px solid #f5c542;">
+                            <th style="padding: 15px; text-align: left; color: #f5c542;">Rank</th>
+                            <th style="padding: 15px; text-align: left; color: #f5c542;">User</th>
+                            <th style="padding: 15px; text-align: center; color: #f5c542;">Points</th>
+                            <th style="padding: 15px; text-align: center; color: #f5c542;">Rank Title</th>
+                            <th style="padding: 15px; text-align: center; color: #f5c542;">Nation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr style="color: #aaa;"><td colspan="5" style="padding: 20px; text-align: center;">Loading leaderboard...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/astrology.js"></script>
+    <script src="data/languages.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/languageSwitcher.js"></script>
+</body>
+</html>

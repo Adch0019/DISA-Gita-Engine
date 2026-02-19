@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - DISA Gita Engine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animated-text" data-text="DISA – Digital Kurukshetra">Login to DISA – Digital Kurukshetra</h1>
+        <div id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <button onclick="showRegister()">Register</button>
+        </div>
+        <div id="registerForm" class="hidden">
+            <input type="text" id="regUsername" placeholder="Username" required>
+            <input type="password" id="regPassword" placeholder="Password" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button onclick="register()">Register</button>
+            <button onclick="showLogin()">Back to Login</button>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>

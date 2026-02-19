@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - DISA Gita Engine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="godly-bg"></div>
+    <nav id="mainNav">
+        <a href="INDEX.HTML" data-lang="home">Home</a>
+        <a href="dashboard.html" data-lang="dashboard">Dashboard</a>
+        <a href="lessons.html" data-lang="lessons">Lessons</a>
+        <a href="tasks.html" data-lang="tasks">Tasks</a>
+        <a href="leaderboard.html" data-lang="leaderboard">Leaderboard</a>
+        <a href="profile.html" data-lang="profile">Profile</a>
+        <a href="#" onclick="logout()" data-lang="logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="animated-text" data-text="Your Dashboard">Your Dashboard</h1>
+        <p style="font-size: 18px; color: #ffdd70;">Track your Gita learning journey and spiritual progress</p>
+
+        <!-- SECTION 1: Quick Stats -->
+        <div style="margin: 20px 0; padding: 15px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.05); animation: slideInUp 0.8s ease-out;">
+            <h2 style="color: #ffdd70; margin-top: 0;">📊 Your Quick Stats</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="padding: 15px; background: rgba(100,200,255,0.1); border-left: 4px solid #00bfff; border-radius: 5px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Current Rank</p>
+                    <p style="margin: 5px 0; color: #00bfff; font-size: 20px; font-weight: bold;"><span id="rank">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(255,215,0,0.1); border-left: 4px solid #ffd700; border-radius: 5px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Total Points</p>
+                    <p style="margin: 5px 0; color: #ffd700; font-size: 20px; font-weight: bold;"><span id="points">0</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(144,238,144,0.1); border-left: 4px solid #90ee90; border-radius: 5px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Lessons Done</p>
+                    <p style="margin: 5px 0; color: #90ee90; font-size: 20px; font-weight: bold;"><span id="lessons">0</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(255,100,150,0.1); border-left: 4px solid #ff6495; border-radius: 5px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Global Rank</p>
+                    <p style="margin: 5px 0; color: #ff6495; font-size: 20px; font-weight: bold;"><span id="worldRank">--</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Recent Activity -->
+        <div class="section-divider" style="margin: 30px 0;"></div>
+        <div style="margin: 20px 0; padding: 25px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.05); animation: slideInUp 0.8s ease-out 0.2s both;">
+            <h2 style="color: #ffdd70; margin-top: 0;">⚡ Recent Activity</h2>
+            <ul id="activityList" style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 10px; border-left: 3px solid #f5c542; margin: 10px 0; background: rgba(245,197,66,0.05);">Loading activities...</li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/astrology.js"></script>
+    <script src="data/languages.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/languageSwitcher.js"></script>
+</body>
+</html>

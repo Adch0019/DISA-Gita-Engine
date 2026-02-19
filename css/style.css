@@ -1,0 +1,713 @@
+:root {
+    --primary-color: #f5c542;
+    --secondary-color: #ffdd70;
+    --accent-color: #ffffff;
+    --bg-gradient: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-gradient);
+    color: white;
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+    overflow-x: hidden;
+}
+
+#godly-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(245,197,66,0.1) 0%, rgba(47,54,64,0.3) 100%);
+    z-index: -1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animated-text {
+    position: relative;
+    display: inline-block;
+    font-size: 2.5em;
+    color: #f5c542;
+    text-shadow: 0 0 10px #f5c542;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animated-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #f5c542, #ffdd70, #f5c542);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.animated-text:hover::before {
+    opacity: 1;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #f5c542; }
+    to { text-shadow: 0 0 20px #f5c542, 0 0 30px #f5c542; }
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+nav {
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #f5c542;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Real-time Clock Styling */
+#realTimeClock {
+    font-family: 'Courier New', monospace !important;
+    letter-spacing: 2px;
+    animation: clockGlow 2s ease-in-out infinite;
+}
+
+@keyframes clockGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255,215,0,0.5), 0 0 20px rgba(255,215,0,0.3);
+        text-shadow: 0 0 10px rgba(255,215,0,0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.5);
+        text-shadow: 0 0 20px rgba(255,215,0,1);
+    }
+}
+
+#userRank {
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+.container {
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #f5c542;
+}
+
+input, select {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5c542;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #ffdd70;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+#guidanceBox {
+    margin-top: 20px;
+    background: rgba(34,34,34,0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #f5c542;
+}
+
+.progress-container {
+    width: 80%;
+    height: 20px;
+    background: #333;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#lifeBar {
+    height: 100%;
+    width: 0%;
+    background: #f5c542;
+    transition: width 1s ease-in-out;
+}
+
+h4 {
+    color: #f5c542;
+    margin-top: 15px;
+}
+
+#sanskrit {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffdd70;
+}
+
+.mentor {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 220px;
+    padding: 10px;
+    animation: slideIn 0.8s ease forwards;
+}
+
+.mentor-img {
+    width: 100%;
+}
+
+.speech {
+    background: rgba(34,34,34,0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #f5c542;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.lesson {
+    background: rgba(34,34,34,0.8);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.lesson:hover {
+    background: rgba(245,197,66,0.2);
+}
+
+.task {
+    background: rgba(34,34,34,0.8);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task button {
+    background: #f5c542;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #f5c542;
+    text-align: center;
+}
+
+th {
+    background: rgba(245,197,66,0.2);
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.task-card {
+    background: rgba(34,34,34,0.8);
+    border: 1px solid #f5c542;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+}
+
+.task-card h3 {
+    color: #f5c542;
+    margin: 0 0 10px 0;
+}
+
+.task-card p {
+    margin: 5px 0;
+}
+
+.task-points {
+    color: #ffdd70;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.task-card button {
+    width: 100%;
+    padding: 10px;
+    background: #f5c542;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.task-card button:hover:not(:disabled) {
+    background: #ffdd70;
+}
+
+.btn-completed {
+    background: #4caf50 !important;
+    color: white !important;
+}
+
+.task-card button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+/* ===== CHARACTER CAROUSEL STYLES ===== */
+.character-carousel-container {
+    position: fixed;
+    left: 20px;
+    top: 120px;
+    width: 250px;
+    background: rgba(47, 54, 64, 0.9);
+    border: 2px solid #f5c542;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(245, 197, 66, 0.3);
+    z-index: 100;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+#characterCarousel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.character-display {
+    flex: 1;
+    text-align: center;
+}
+
+.character-img {
+    margin: 15px 0;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-emoji {
+    font-size: 60px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.character-teaching {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #ffdd70;
+}
+
+.character-teaching h3 {
+    margin: 10px 0 5px 0;
+    color: #f5c542;
+    font-size: 14px;
+}
+
+.character-teaching p {
+    margin: 0;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.char-nav-btn {
+    background: #f5c542;
+    border: none;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.char-nav-btn:hover {
+    background: #ffdd70;
+    transform: scale(1.1);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.lesson-detailed-box {
+    background: rgba(245, 197, 66, 0.05);
+    border-left: 4px solid #f5c542;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+/* ============ SHLOKA SECTION STYLING ============ */
+.shloka-section {
+    margin: 40px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(245,197,66,0.08) 100%);
+    border: 2px solid #f5c542;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255,215,0,0.2);
+    animation: slideInUp 0.8s ease-out;
+}
+
+.shloka-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.shloka-display {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.shloka-nav-btn {
+    background: linear-gradient(135deg, #f5c542, #ffdd70);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(245,197,66,0.4);
+}
+
+.shloka-nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(245,197,66,0.6);
+}
+
+.shloka-nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* ============ BACKGROUND ANIMATIONS ============ */
+#godly-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(245,197,66,0.1) 0%, rgba(47,54,64,0.3) 100%);
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Dotted glowing background circles */
+#godly-bg::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+    border: 2px dashed rgba(255,215,0,0.5);
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+#godly-bg::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(100,200,255,0.2) 0%, transparent 70%);
+    border: 2px dashed rgba(100,200,255,0.4);
+    border-radius: 50%;
+    bottom: 15%;
+    right: 8%;
+    animation: float 10s ease-in-out infinite reverse;
+    opacity: 0.5;
+}
+
+/* Additional floating elements */
+body::before {
+    content: '';
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,100,150,0.2) 0%, transparent 70%);
+    border: 1px dotted rgba(255,100,150,0.3);
+    border-radius: 50%;
+    top: 50%;
+    left: 5%;
+    animation: floatVert 12s ease-in-out infinite;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(100,255,200,0.15) 0%, transparent 70%);
+    border: 1.5px dotted rgba(100,255,200,0.35);
+    border-radius: 50%;
+    bottom: 20%;
+    right: 5%;
+    animation: floatDiag 15s linear infinite;
+    z-index: -1;
+    opacity: 0.45;
+}
+
+/* Floating animation variations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-30px) translateX(20px);
+    }
+    66% {
+        transform: translateY(30px) translateX(-20px);
+    }
+}
+
+@keyframes floatVert {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes floatDiag {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, -30px) rotate(90deg);
+    }
+    50% {
+        transform: translate(0, -60px) rotate(180deg);
+    }
+    75% {
+        transform: translate(-20px, -30px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Glow pulse animation for shloka display */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255,215,0,0.3), inset 0 0 10px rgba(255,215,0,0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255,215,0,0.6), inset 0 0 20px rgba(255,215,0,0.2);
+    }
+}
+
+/* Slide in up animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section divider styling */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f5c542, transparent);
+    position: relative;
+    animation: shimmerLine 2s ease-in-out infinite;
+}
+
+@keyframes shimmerLine {
+    0%, 100% {
+        background: linear-gradient(90deg, transparent, #f5c542, transparent);
+        box-shadow: none;
+    }
+    50% {
+        background: linear-gradient(90deg, transparent, #ffdd70, transparent);
+        box-shadow: 0 0 10px rgba(255,221,112,0.5);
+    }
+}
+
+/* ============ LESSON & CARD ANIMATIONS ============ */
+.lesson {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(245,197,66,0.08), rgba(100,200,255,0.08));
+    border: 2px solid #f5c542;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out both;
+}
+
+.lesson:hover {
+    background: linear-gradient(135deg, rgba(245,197,66,0.15), rgba(100,200,255,0.15));
+    border-color: #ffdd70;
+    box-shadow: 0 8px 25px rgba(245,197,66,0.3), 0 0 20px rgba(255,215,0,0.2);
+    transform: translateY(-5px);
+}
+
+.lesson h3 {
+    color: #ffdd70;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.lesson p {
+    color: #aaa;
+    margin: 0;
+    font-size: 14px;
+}
+
+.task-card {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(245,197,66,0.08), rgba(100,200,255,0.08));
+    border: 2px solid #f5c542;
+    border-radius: 10px;
+    animation: slideInUp 0.6s ease-out both;
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    background: linear-gradient(135deg, rgba(245,197,66,0.15), rgba(100,200,255,0.15));
+    border-color: #ffdd70;
+    box-shadow: 0 8px 25px rgba(245,197,66,0.3), 0 0 20px rgba(255,215,0,0.2);
+    transform: translateY(-5px);
+}
+
+table tbody tr {
+    animation: slideInUp 0.6s ease-out backwards;
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background: rgba(245,197,66,0.1);
+    transform: scale(1.01);
+}
+
+/* Stagger animations for table rows */
+table tbody tr:nth-child(1) { animation-delay: 0s; }
+table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+table tbody tr:nth-child(4) { animation-delay: 0.3s; }
+table tbody tr:nth-child(5) { animation-delay: 0.4s; }
+
+/* Responsive design for character carousel */
+@media (max-width: 768px) {
+    .character-carousel-container {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+        left: 0;
+        top: 0;
+    }
+    
+    .character-emoji {
+        font-size: 40px;
+    }
+    
+    .shloka-container {
+        flex-direction: column;
+    }
+    
+    .shloka-nav-btn {
+        width: 100%;
+    }
+    
+    #godly-bg::before,
+    #godly-bg::after,
+    body::before,
+    body::after {
+        opacity: 0.3;
+    }
+}
+
+

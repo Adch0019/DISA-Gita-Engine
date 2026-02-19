@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - DISA Gita Engine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="godly-bg"></div>
+    <nav id="mainNav">
+        <a href="INDEX.HTML" data-lang="home">Home</a>
+        <a href="dashboard.html" data-lang="dashboard">Dashboard</a>
+        <a href="lessons.html" data-lang="lessons">Lessons</a>
+        <a href="tasks.html" data-lang="tasks">Tasks</a>
+        <a href="leaderboard.html" data-lang="leaderboard">Leaderboard</a>
+        <a href="profile.html" data-lang="profile">Profile</a>
+        <a href="#" onclick="logout()" data-lang="logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="animated-text" data-text="Your Profile">Your Profile</h1>
+        <p style="font-size: 18px; color: #ffdd70;">Manage your account and customize your experience</p>
+
+        <!-- SECTION 0: DOB & Astrology Info -->
+        <div id="astroSection" style="margin: 20px 0; padding: 25px; border: 2px solid #FF6B35; border-radius: 10px; background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,215,0,0.08)); animation: slideInUp 0.8s ease-out;">
+            <h2 style="color: #FFD700; margin-top: 0;">🌟 Your Cosmic Profile</h2>
+            <div style="display: block; margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; color: #FFD700; font-size: 14px; font-weight: bold;">Date of Birth</label>
+                <input type="date" id="dobInput" placeholder="Select your DOB" style="width: 100%; max-width: 300px; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #FF6B35; background: rgba(0,0,0,0.3); color: white;">
+                <button onclick="calculateAstrology()" style="padding: 8px 20px; background: #FF6B35; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-left: 10px;">Calculate</button>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="padding: 15px; background: rgba(255,215,0,0.15); border-radius: 8px; border-left: 4px solid #FFD700;">
+                    <p style="margin: 0; color: #aaa; font-size: 11px; font-weight: bold;">Sun Sign (Rashi)</p>
+                    <p style="margin: 8px 0; color: #FFD700; font-size: 16px; font-weight: bold;"><span id="sunSign">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(100,200,255,0.15); border-radius: 8px; border-left: 4px solid #00bfff;">
+                    <p style="margin: 0; color: #aaa; font-size: 11px; font-weight: bold;">Nakshatra (Moon House)</p>
+                    <p style="margin: 8px 0; color: #00bfff; font-size: 16px; font-weight: bold;"><span id="nakshatra">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(255,105,180,0.15); border-radius: 8px; border-left: 4px solid #FF69B4;">
+                    <p style="margin: 0; color: #aaa; font-size: 11px; font-weight: bold;">Ruling Planet</p>
+                    <p style="margin: 8px 0; color: #FF69B4; font-size: 16px; font-weight: bold;"><span id="rulingPlanet">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(144,238,144,0.15); border-radius: 8px; border-left: 4px solid #90ee90;">
+                    <p style="margin: 0; color: #aaa; font-size: 11px; font-weight: bold;">Presiding Deity</p>
+                    <p style="margin: 8px 0; color: #90ee90; font-size: 14px; font-weight: bold;"><span id="deity">--</span></p>
+                </div>
+            </div>
+            <div id="horoscopeBox" class="hidden" style="margin-top: 20px; padding: 20px; border: 2px solid #FFD700; border-radius: 8px; background: rgba(255,215,0,0.08);">
+                <h3 style="color: #FFD700; margin-top: 0;">🔮 Daily Horoscope</h3>
+                <div style="padding: 12px; background: rgba(100,200,255,0.1); border-left: 4px solid #00bfff; border-radius: 5px; margin-bottom: 15px;">
+                    <p style="margin: 0; color: #e0e0e0; font-size: 13px;"><strong>Prediction:</strong> <span id="horscopePrediction">--</span></p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 15px;">
+                    <div style="padding: 10px; background: rgba(255,215,0,0.1); border-radius: 5px;"><p style="margin: 0; color: #aaa; font-size: 11px;">Lucky Color</p><p style="margin: 5px 0; color: #FFD700; font-weight: bold; font-size: 14px;"><span id="luckyColor">--</span></p></div>
+                    <div style="padding: 10px; background: rgba(144,238,144,0.1); border-radius: 5px;"><p style="margin: 0; color: #aaa; font-size: 11px;">Lucky Number</p><p style="margin: 5px 0; color: #90ee90; font-weight: bold; font-size: 14px;"><span id="luckyNumber">--</span></p></div>
+                    <div style="padding: 10px; background: rgba(100,200,255,0.1); border-radius: 5px;"><p style="margin: 0; color: #aaa; font-size: 11px;">Lucky Time</p><p style="margin: 5px 0; color: #00bfff; font-weight: bold; font-size: 14px;"><span id="luckyTime">--</span></p></div>
+                    <div style="padding: 10px; background: rgba(255,105,180,0.1); border-radius: 5px;"><p style="margin: 0; color: #aaa; font-size: 11px;">Lucky Direction</p><p style="margin: 5px 0; color: #FF69B4; font-weight: bold; font-size: 14px;"><span id="luckyDir">--</span></p></div>
+                </div>
+                <div style="padding: 12px; background: rgba(144,238,144,0.1); border-left: 4px solid #90ee90; border-radius: 5px;">
+                    <p style="margin: 0; color: #e0e0e0; font-size: 13px;"><strong>Daily Advice:</strong> <span id="horsecopeAdvice">--</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Profile Info -->
+        <div class="section-divider" style="margin: 30px 0;"></div>
+        <div id="profileInfo" style="margin: 20px 0; padding: 25px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.05); animation: slideInUp 0.8s ease-out;">
+            <h2 style="color: #ffdd70; margin-top: 0;">👤 Profile Information</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                <div style="padding: 15px; background: rgba(100,200,255,0.1); border-radius: 8px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Username</p>
+                    <p style="margin: 5px 0; color: #00bfff; font-size: 18px; font-weight: bold;"><span id="username">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(255,215,0,0.1); border-radius: 8px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Email</p>
+                    <p style="margin: 5px 0; color: #ffd700; font-size: 14px;"><span id="email">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(144,238,144,0.1); border-radius: 8px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Current Rank</p>
+                    <p style="margin: 5px 0; color: #90ee90; font-size: 18px; font-weight: bold;"><span id="rank">--</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(255,100,150,0.1); border-radius: 8px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Total Points</p>
+                    <p style="margin: 5px 0; color: #ff6495; font-size: 18px; font-weight: bold;"><span id="points">0</span></p>
+                </div>
+                <div style="padding: 15px; background: rgba(100,255,200,0.1); border-radius: 8px;">
+                    <p style="margin: 0; color: #aaa; font-size: 12px;">Lessons Completed</p>
+                    <p style="margin: 5px 0; color: #64ffc8; font-size: 18px; font-weight: bold;"><span id="lessons">0</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Edit Profile -->
+        <div class="section-divider" style="margin: 30px 0;"></div>
+        <div id="editProfile" class="hidden" style="margin: 20px 0; padding: 25px; border: 2px solid #f5c542; border-radius: 10px; background: rgba(245,197,66,0.05); animation: slideInUp 0.8s ease-out 0.2s both;">
+            <h2 style="color: #ffdd70; margin-top: 0;">⚙️ Edit Settings</h2>
+            <div style="margin-top: 20px;">
+                <label style="display: block; margin-bottom: 10px; color: #aaa; font-size: 14px;">Date of Birth</label>
+                <input type="date" id="editDob" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c542; background: rgba(0,0,0,0.3); color: white;">
+                
+                <label style="display: block; margin-bottom: 10px; color: #aaa; font-size: 14px;">Email Address</label>
+                <input type="email" id="editEmail" placeholder="New Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c542; background: rgba(0,0,0,0.3); color: white;">
+                
+                <label style="display: block; margin-bottom: 10px; color: #aaa; font-size: 14px;">Language</label>
+                <select id="languageSelect" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c542; background: rgba(0,0,0,0.3); color: white;">
+                    <option value="en">English 🇬🇧</option>
+                    <option value="hi">Hindi 🇮🇳</option>
+                    <option value="ta">Tamil 🇮🇳</option>
+                    <option value="kn">Kannada 🇮🇳</option>
+                    <option value="ur">Urdu 🇵🇰</option>
+                    <option value="ru">Russian 🇷🇺</option>
+                    <option value="fr">French 🇫🇷</option>
+                    <option value="pt">Portuguese 🇵🇹</option>
+                    <option value="sa">Sanskrit 🇮🇳</option>
+                </select>
+                
+                <label style="display: block; margin-bottom: 10px; color: #aaa; font-size: 14px;">Country/Nation</label>
+                <select id="nationSelect" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c542; background: rgba(0,0,0,0.3); color: white;">
+                    <option value="IN">India 🇮🇳</option>
+                    <option value="US">USA 🇺🇸</option>
+                    <option value="GB">UK 🇬🇧</option>
+                    <option value="FR">France 🇫🇷</option>
+                    <option value="RU">Russia 🇷🇺</option>
+                    <option value="PT">Portugal 🇵🇹</option>
+                    <option value="PK">Pakistan 🇵🇰</option>
+                    <option value="CA">Canada 🇨🇦</option>
+                    <option value="AU">Australia 🇦🇺</option>
+                </select>
+                
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button onclick="updateProfile()" style="padding: 12px 30px; background: #00bfff; color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Save Changes</button>
+                    <button onclick="cancelEdit()" style="padding: 12px 30px; background: #666; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Edit Button -->
+        <div class="section-divider" style="margin: 30px 0;"></div>
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="showEdit()" style="padding: 15px 40px; background: linear-gradient(135deg, #f5c542, #ffdd70); color: #000; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(245,197,66,0.4);">✏️ Edit Profile</button>
+        </div>
+    </div>
+    <script src="js/astrology.js"></script>
+    <script src="data/languages.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/languageSwitcher.js"></script>
+</body>
+</html>
