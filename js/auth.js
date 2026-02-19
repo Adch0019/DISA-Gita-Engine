@@ -40,6 +40,14 @@ function showLogin() {
     document.getElementById('loginForm').classList.remove('hidden');
 }
 
+function clearData() {
+    if (confirm('This will clear all user data and log you out. Are you sure?')) {
+        localStorage.clear();
+        alert('All data cleared. Please refresh the page.');
+        window.location.reload();
+    }
+}
+
 // Check if user is logged in
 if (localStorage.getItem('currentUser')) {
     // Already logged in, redirect to main
